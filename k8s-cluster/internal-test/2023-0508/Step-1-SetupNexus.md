@@ -21,13 +21,13 @@
 
         passwd
 
-        # enter new password (twice)
+      enter new password (twice)
 
 ### **Install Nexus**
 1. Base Package Installation
-    - **At the Nexus server**
+   - **At the Nexus server**
   
-    yum update -y
+          yum update -y
           yum -y install java-1.8.0-openjdk java-1.8.0-openjdk-devel
 
 
@@ -46,6 +46,7 @@
           
           chown -R nexus:nexus /opt/nexus
           chown -R nexus:nexus /opt/nexusdata
+
 
 
 3. **Nexus Configuration Files**
@@ -72,6 +73,7 @@
           cat /opt/nexus/bin/nexus.rc
 
 
+
     3.3 Moidfy file : ***/etc/security/limits.conf***
     - **At the Nexus server**      
     - add limit value to "/etc/security/limits.conf"
@@ -83,6 +85,7 @@
           EOF
 
           cat /etc/security/limits.conf
+
 
 
 4. Create "Nexus Service" file
@@ -124,10 +127,11 @@
 
           tail -f /opt/nexusdata/nexus3/log/nexus.log
 
-          # then
-          # if nexus service is successfully started, you can see the message like this, ... 
-          ...
-
+         then
+         
+         if nexus service is successfully started, you can see the message like this, ... 
+ 
+ 
           -------------------------------------------------
           
           Started Sonatype Nexus OSS 3.xx.x-xx
@@ -141,7 +145,7 @@
 
           cat /opt/nexusdata/nexus3/admin.password
 
-          # then the initial password will show-up like 
+      then the initial password will show-up like 
  
           275bdee3-0c71-4b60-9947-eea20d946e1f
             
