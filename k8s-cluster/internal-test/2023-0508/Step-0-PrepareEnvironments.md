@@ -15,3 +15,29 @@
 | NFS | NFS-0.ymlee.ibm	| - |10.168.40.xx | NFS |
 
 ---
+
+
+## **Setup Bastion**
+
+1. Log in into Bastino Server
+2. Change Password
+  - as root user  
+
+        passwd
+
+        # enter new password (twice)
+
+3. Generate ssh-key to login to other VM's
+  - Generate the ssh-key
+        
+        ssh-keygen
+
+  - Check 
+
+        cat /root/.ssh/id_rsa.pub
+
+
+## **Echo**
+  - ss
+
+        export NEXUS_0=10.160.22.160
