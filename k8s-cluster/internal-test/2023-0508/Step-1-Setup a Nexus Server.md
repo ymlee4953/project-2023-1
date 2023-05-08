@@ -161,10 +161,17 @@
 
     6.3 Change the password in the First login
     - **at the browser**
+    - Log in with the password and change to new one
 
           # user: admin
           # Password : paste copied the initial password and change to new password through Wizard
 
+    - for "Configure Anonymous Access"
+
+          # Select:  "Enable anonymous access"
+
+
+Enable anonymous access
 
 7. Repository Set up
 
@@ -218,7 +225,7 @@
       | | | dockerpxy-docker-io |
       | | | dockerpxy-gcr-io |
       | | | dockerpxy-ghcr-io |
-      | | | dockerpxy-k8s-gcr-io |
+      | | | dockerpxy-registry-k8s-io |
       | | | dockerpxy-quay-io|
 
     7.3 Pypi Repository
