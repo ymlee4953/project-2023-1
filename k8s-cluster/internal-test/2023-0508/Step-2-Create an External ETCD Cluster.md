@@ -1,4 +1,4 @@
-## **Sreate an External ETCD Cluster**
+## **Create an External ETCD Cluster**
 
 ### **Prepartion**
 
