@@ -1,4 +1,4 @@
-## **Setup Nexus Server**
+## **Setup a Nexus Server**
 
 ### **Prepartion**
 
@@ -201,7 +201,7 @@
       | Docker.io | dockerpxy-docker-io | https://registry-1.docker.io/ | Allow anonymous docker pull |
       | Gcr.io | dockerpxy-gcr-io | https://gcr.io/ | Allow anonymous docker pull |
       | Github.io | dockerpxy-ghcr-io | http://ghcr.io/ | Allow anonymous docker pull |
-      | K8s.gcr.io | dockerpxy-k8s-gcr-io | https://k8s.gcr.io/ | Allow anonymous docker pull |
+      | Registry.k8s.io | dockerpxy-registry-k8s-io | https://registry.k8s.io/ | Allow anonymous docker pull |
       | Quay.io | dockerpxy-quay-io | http://quay.io/ | Allow anonymous docker pull |
 
     - docker (hosted)
