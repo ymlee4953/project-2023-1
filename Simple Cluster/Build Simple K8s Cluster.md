@@ -13,47 +13,47 @@ Log in to the lab servers using the credentials provided:
 ## **Install Packages**
 1. Log in to the control plane node.
 
-        Note: The following steps must be performed on all three nodes.
+      - Note: The following steps must be performed on all three nodes.
 
 2. Create configuration file for containerd:
 
-        cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
-        overlay
-        br_netfilter
-        EOF
+       cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
+       overlay
+       br_netfilter
+       EOF
         
 3. Load modules:
 
-        sudo modprobe overlay
-        sudo modprobe br_netfilter
+       sudo modprobe overlay
+       sudo modprobe br_netfilter
 
 4. Set system configurations for Kubernetes networking:
 
-        cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
-        net.bridge.bridge-nf-call-iptables = 1
-        net.ipv4.ip_forward = 1
-        net.bridge.bridge-nf-call-ip6tables = 1
-        EOF
+       cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
+       net.bridge.bridge-nf-call-iptables = 1
+       net.ipv4.ip_forward = 1
+       net.bridge.bridge-nf-call-ip6tables = 1
+       EOF
 
 5. Apply new settings:
 
-        sudo sysctl --system
+       sudo sysctl --system
 
 6. Install containerd:
 
-        sudo apt-get update && sudo apt-get install -y containerd.io
+       sudo apt-get update && sudo apt-get install -y containerd.io
 
 7. Create default configuration file for containerd:
 
-        sudo mkdir -p /etc/containerd
+       sudo mkdir -p /etc/containerd
 
 8. Generate default containerd configuration and save to the newly created default file:
 
-        sudo containerd config default | sudo tee /etc/containerd/config.toml
+       sudo containerd config default | sudo tee /etc/containerd/config.toml
 
 9. Restart containerd to ensure new configuration file usage:
 
-        sudo systemctl restart containerd
+       sudo systemctl restart containerd
 
 10. Verify that containerd is running:
 
@@ -97,17 +97,17 @@ Log in to the lab servers using the credentials provided:
 
 1. On the control plane node, initialize the Kubernetes cluster on the control plane node using kubeadm:
 
-        sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
+       sudo kubeadm init --pod-network-cidr 192.168.0.0/16 --kubernetes-version 1.24.0
 
 2. Set kubectl access:
 
-        mkdir -p $HOME/.kube
-        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+       mkdir -p $HOME/.kube
+       sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+       sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 3. Test access to cluster:
 
-        kubectl get nodes
+       kubectl get nodes
 
 ---
 
@@ -115,18 +115,18 @@ Log in to the lab servers using the credentials provided:
 
 1. On the control plane node, install Calico Networking:
 
-        kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
+       kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml
 
 2. Check status of the control plane node:
 
-        kubectl get nodes
+       kubectl get nodes
 
 ---
 
 ## **Join the Worker Nodes to the Cluster**
 1. In the control plane node, create the token and copy the kubeadm join command:
 
-        kubeadm token create --print-join-command
+       kubeadm token create --print-join-command
         
       - Note: This output will be used as the next command for the worker nodes.
 
@@ -134,11 +134,11 @@ Log in to the lab servers using the credentials provided:
 
 3. In both worker nodes, paste the full kubeadm join command to join the cluster. Use sudo to run it as root:
 
-        sudo kubeadm join... 
+       sudo kubeadm join... 
 
 4. In the control plane node, view cluster status:
 
-        kubectl get nodes
+       kubectl get nodes
       - Note: You may have to wait a few moments to allow all nodes to become ready.
 
 ## **Conclusion**
