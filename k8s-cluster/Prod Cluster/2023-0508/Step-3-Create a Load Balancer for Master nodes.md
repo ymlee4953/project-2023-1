@@ -26,9 +26,9 @@
 3. Declare Parameters
 - for Master nodes
 
-      export MASTER_1=10.160.22.168
-      export MASTER_2=10.160.22.164
-      export MASTER_3=10.160.22.171
+      export MASTER_1=10.xxx.xxx.xxx
+      export MASTER_2=10.xxx.xxx.xxx
+      export MASTER_3=10.xxx.xxx.xxx
 
 
 ### **Setup HA Proxy**

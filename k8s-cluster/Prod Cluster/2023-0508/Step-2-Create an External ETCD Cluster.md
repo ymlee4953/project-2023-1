@@ -191,7 +191,7 @@
     - Join to the etcd cluster one-by-one 
     - at ETCD-2, 3
 
-          ./etcdadm join http://10.160.153.19:2379    // one-by-one
+          ./etcdadm join http://10.xxx.xxx.xxx:2379    // one-by-one
           
           exit
 

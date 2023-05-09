@@ -210,7 +210,10 @@ Enable anonymous access
       | Github.io | dockerpxy-ghcr-io | http://ghcr.io/ | Allow anonymous docker pull |
       | Registry.k8s.io | dockerpxy-registry-k8s-io | https://registry.k8s.io/ | Allow anonymous docker pull |
       | Quay.io | dockerpxy-quay-io | http://quay.io/ | Allow anonymous docker pull |
-
+      | K8s.gcr.io | dockerpxy-k8s-gcr-io | https://k8s.gcr.io/ | Allow anonymous docker pull |
+       | quay.io(Azure Ch) | dockerpxy-quay-azc-io | https://quay.azk8s.cn/ | Allow anonymous docker pull |
+      | gcr.io (Azure Ch) | dockerpxy-gcr-azc-io | https://gcr.azk8s.cn/ | Allow anonymous docker pull |
+      | elastic.co | docker-elastic-co | http://docker.elastic.co/ | Allow anonymous docker pull |
     - docker (hosted)
       | Repository Name | HTTP | Extra Oprtions|
       | :--- | :--- | :--- |
@@ -227,7 +230,10 @@ Enable anonymous access
       | | | dockerpxy-ghcr-io |
       | | | dockerpxy-registry-k8s-io |
       | | | dockerpxy-quay-io|
-
+      | | | dockerpxy-k8s-gcr-io |
+       | | | docker-elastic-co |
+      | | | dockerpxy-gcr-azc-io |
+      | | | dockerpxy-quay-azc-io|
     7.3 Pypi Repository
     - pypi (proxy)  
 

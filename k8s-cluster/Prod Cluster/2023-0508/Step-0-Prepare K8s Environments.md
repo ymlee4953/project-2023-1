@@ -20,10 +20,13 @@
 
 | Server | Hostname | Public IP | Private IP | Parameter |
 | :--- | :--- | :--- | :--- | :--- |
-| ETCD |etcd-1.k8s.demo.ymlee	| -	|10.160.22.167 | ECTD_1 |
-| ETCD |etcd-1.k8s.demo.ymlee	| -	|10.160.22.167 | ECTD_2 |
-| ETCD |etcd-1.k8s.demo.ymlee	| -	|10.160.22.167 | ECTD_3 |
-
+| ETCD |etcd-1.k8s.demo.ymlee	| -	|10.160.22.167 | ETCD_1 |
+| ETCD |etcd-2.k8s.demo.ymlee	| -	|10.160.22.167 | ETCD_2 |
+| ETCD |etcd-3.k8s.demo.ymlee	| -	|10.160.22.167 | ETCD_3 |
+| ETCD |lb-1.k8s.demo.ymlee	| -	|10.160.22.167 | LB_1 |
+| ETCD |master-1.k8s.demo.ymlee	| -	|10.160.22.167 | MASTER_1 |
+| ETCD |master-2.k8s.demo.ymlee	| -	|10.160.22.167 | MASTER_1_2 |
+| ETCD |master-3.k8s.demo.ymlee	| -	|10.160.22.167 | MASTER_1_3 |
 ---
 
 
@@ -47,7 +50,49 @@
         cat /root/.ssh/id_rsa.pub
 
 
-## **Echo**
-  - ss
+## **Echo Parameters**
+  - Parameters
 
-        export NEXUS_0=10.160.22.160
+        export NEXUS_0=10.160.22.158
+
+        export ETCD_1=10.160.22.185
+        export ETCD_2=10.160.22.162
+        export ETCD_3=10.160.22.138
+
+        export LB_1=10.160.22.171
+
+        export MASTER_1=10.160.22.188
+        export MASTER_2=10.160.22.166
+        export MASTER_3=10.160.22.143
+
+        export WORKER_1=10.160.22.172
+        export WORKER_2=10.160.22.174
+        export WORKER_3=10.160.22.173
+        
+  - Nexus URL
+            
+        http://169.45.124.105:8081
+
+
+
+  - Tutorial
+
+        cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+        [kubernetes]
+        name=Kubernetes
+        baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+        enabled=1
+        gpgcheck=1
+        gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+        exclude=kubelet kubeadm kubectl
+        EOF
+
+
+  - Set SELinux in permissive mode (effectively disabling it)
+
+        sudo setenforce 0
+        sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+        sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+
+        sudo systemctl enable --now kubelet
