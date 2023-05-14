@@ -39,17 +39,17 @@
     - yum install and make
     - at Bastion Server
 
-          yum install -y make git
+          sudo yum install -y make git
 
     1.2 Install Go
     - Download File
 
-          wget https://dl.google.com/go/go1.20.4.linux-amd64.tar.gz
-          tar -C /usr/local -xzf ./go1.20.4.linux-amd64.tar.gz
+          sudo wget https://dl.google.com/go/go1.20.4.linux-amd64.tar.gz
+          sudo tar -C /usr/local -xzf ./go1.20.4.linux-amd64.tar.gz
 
     - add Go Path
 
-          vi ~/.bash_profile
+          sudo vi ~/.bash_profile
 
     - edit Go Path
     
