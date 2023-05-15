@@ -66,6 +66,9 @@
         wget https://packages.cloud.google.com/yum/doc/yum-key.gpg
         wget https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
+        curl https://docs.projectcalico.org/archive/v3.24/manifests/calico.yaml -O
+
+
 - 1.2 send gpg files to each Kubernetes nodes
   - for every Kubernetes nodes
 
@@ -160,8 +163,6 @@
         EOF
 
         cat temptext_for_configtoml.txt
-
-
 
   - 1.2.3 :
   
@@ -328,11 +329,19 @@
 
   - 3.3.1 :
 
-        curl https://docs.projectcalico.org/archive/v3.24/manifests/calico.yaml -O
+  - at bastion-0
+        
+        cd
 
+        sftp $MASTER_1
 
+        put calico.yaml
+
+        exit
 
   - 3.3.2 :      
+
+        ssh $MASTER_1
 
         kubectl apply -f calico.yaml
 
