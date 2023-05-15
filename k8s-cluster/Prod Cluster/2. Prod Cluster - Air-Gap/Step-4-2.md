@@ -115,28 +115,88 @@
 
 - eee
 
-      sudo cat <<EOF> kubeadm-config.yaml
+      cd ~/files/ETCD-1/etc/etcd/pki
+
+      sftp $MASTER_1 
+
+      put ca.*
+      put apiserver-etcd-client.*
+
+      exit
+
+
+- eee
+
+      ssh $MASTER_1 
+
+      mkdir -p /etc/kubernetes/pki/etcd
+      mv ./ca.* /etc/kubernetes/pki/etcd
+      mv ./apiserver-etcd-client.* /etc/kubernetes/pki
+
+      ls -l /etc/kubernetes/pki
+
+- eee
+
+      yum install nc
+
+      nc -v ${LB_1} 6443
+
+      Ctrl-C
+
+
+- eee
+
+- eee
+
+
+- eee
+
+      cat <<EOF> kubeadm-config.yaml
       apiVersion: kubeadm.k8s.io/v1beta3
       kind: InitConfiguration
       nodeRegistration:
-      criSocket: "/run/containerd/containerd.sock"
+        criSocket: "unix:///var/run/containerd/containerd.sock"
       ---
       apiVersion: kubeadm.k8s.io/v1beta3
       kind: ClusterConfiguration
-      clusterName: test.k8s.ymlee
+      clusterName: c.demo.k8s.ymlee
       kubernetesVersion: "v1.27.1"
       networking:
-      podSubnet: 192.168.0.0/16
-      serviceSubnet: 20.96.0.0/16
+        podSubnet: 192.168.0.0/16
+        serviceSubnet: 20.96.0.0/16
+      apiServer:
+        certSANs:
+        - "${LB_1}"
+      controlPlaneEndpoint: "${LB_1}:6443"
+      etcd:
+        external:
+          endpoints:
+          - https://${ETCD_1}:2379
+          - https://${ETCD_2}:2379
+          - https://${ETCD_3}:2379
+          caFile: /etc/kubernetes/pki/etcd/ca.crt
+          certFile: /etc/kubernetes/pki/apiserver-etcd-client.crt
+          keyFile: /etc/kubernetes/pki/apiserver-etcd-client.key
       ---
       apiVersion: kubelet.config.k8s.io/v1beta1
       kind: KubeletConfiguration
       cgroupDriver: "systemd"
       EOF
 
+      cat kubeadm-config.yaml
+
+
+
 - eee
 
-      sudo kubeadm init --config kubeadm-config.yaml
+      systemctl daemon-reload
+      systemctl restart kubelet
+
+      systemctl status kubelet -l
+
+- eee
+
+      sudo kubeadm init --config kubeadm-config.yaml --upload-certs
 
 - eee
 
@@ -151,3 +211,26 @@
 - fff      
 
       kubectl apply -f calico.yaml
+
+      
+- fff      
+
+
+      mkdir -p ~/files/MASTER-1/etc/kubernetes/pki/etcd/
+      cd ~/files/MASTER-1/etc/kubernetes/pki/
+
+      sftp $MASTER_1
+
+      get /etc/kubernetes/pki/apiserver-etcd-client.crt /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/apiserver-etcd-client.key /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/ca.crt /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/ca.key /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/sa.key /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/sa.pub /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/front-proxy-ca.crt /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/front-proxy-ca.key /root/files/MASTER-1/etc/kubernetes/pki/
+      get /etc/kubernetes/pki/etcd/ca.crt /root/files/MASTER-1/etc/kubernetes/pki/etcd/
+      get /etc/kubernetes/pki/etcd/ca.key /root/files/MASTER-1/etc/kubernetes/pki/etcd/
+      get /etc/kubernetes/admin.conf /root/files/MASTER-1/etc/kubernetes/
+
+      exit      

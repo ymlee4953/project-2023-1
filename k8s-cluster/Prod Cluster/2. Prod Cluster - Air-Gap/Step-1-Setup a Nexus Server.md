@@ -185,6 +185,7 @@ Enable anonymous access
       | CentOS – Extra | yumpxy-centos-extra | http://mirror.centos.org/centos/7/extras/x86_64/ |
       | Docker-CE | yumpxy-docker-ce | https://download.docker.com/linux/centos/7/x86_64/stable |
       | K8s.gcr.io | yumpxy-k8s-gcr-io | https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 |
+      | Kubernetes.io | yumpxy-kubernetes | https://packages.cloud.google.com/yum/repos/ |
 
     - yum (hosted)
       | Repository Name | Repository Depth |
@@ -199,7 +200,7 @@ Enable anonymous access
       | | yumpxy-docker-ce |
       | | yum-hosted |
       | | yumpxy-k8s-gcr-io |
-
+      | | yumpxy-kubernetes |
 
     7.2 Docker Repository
     - docker (proxy)  

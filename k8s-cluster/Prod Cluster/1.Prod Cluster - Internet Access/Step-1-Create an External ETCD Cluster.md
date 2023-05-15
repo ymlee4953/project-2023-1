@@ -203,4 +203,13 @@
 
           exit
 
+
+    - At the bastion/ansible Server
+
+          cd
+          
+          mv *.crt ~/files/ETCD-1/etc/etcd/pki
+          mv *.key ~/files/ETCD-1/etc/etcd/pki
+          
+          ls -l ~/files/ETCD-1/etc/etcd/pki
 ---
