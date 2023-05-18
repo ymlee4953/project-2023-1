@@ -51,6 +51,16 @@
 
         sudo vi /etc/containerd/config.toml
 
+
+    - Cgroup setting in the "/etc/containerd/config.toml" File
+      > Cgroup Drvier setting : Systemd 
+          
+          ...
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+          ...  
+
+
   - 1.2.3 :
   
         sudo systemctl restart containerd
