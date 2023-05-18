@@ -135,19 +135,13 @@
 
   - at each Kubernetes nodes
 
-  - 1.2.1 :
+  - 1.2.1 : install the CRI (containerd)
 
         sudo yum install -y containerd.io
 
-  - 1.2.2 :
-  
-        sudo mkdir -p /etc/containerd
-        sudo containerd config default | sudo tee /etc/containerd/config.toml
+ 
 
-        sudo vi /etc/containerd/config.toml
-
-
-  - 1.2.3 :
+  - 1.2.2 : Prepare Script to edit config.toml for containerd
 
         cat <<EOF> temptext_for_configtoml.txt
                 [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
@@ -163,8 +157,44 @@
         EOF
 
         cat temptext_for_configtoml.txt
+        
+  - 1.2.3 : Initialize & edit config.toml for containerd
+  
+        sudo mkdir -p /etc/containerd
+        sudo containerd config default | sudo tee /etc/containerd/config.toml
 
-  - 1.2.3 :
+        sudo vi /etc/containerd/config.toml
+
+
+    - Cgroup setting in the "/etc/containerd/config.toml" File
+      > a. Cgroup Drvier setting : Systemd 
+          
+          ...
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+          ...  
+
+
+      > b. Repository setting : The IP address of endpoint is the private IP of Nexus server
+
+          ...
+          [plugins."io.containerd.grpc.v1.cri".registry]
+            [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+              [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]
+                endpoint = ["http://10.xxx.xxx.xxx:5001"]
+              [plugins."io.containerd.grpc.v1.cri".registry.mirrors."k8s.gcr.io"]
+                endpoint = ["http://10.xxx.xxx.xxx:5001"] 
+              [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]
+                endpoint = ["http://10.xxx.xxx.xxx:5001"]           
+              [plugins."io.containerd.grpc.v1.cri".registry.mirrors."quay.io"]
+                endpoint = ["http://10.xxx.xxx.xxx:5001"]
+              [plugins."io.containerd.grpc.v1.cri".registry.mirrors."$10.xxx.xxx.xxx:5001"]
+              endpoint = ["http://10.xxx.xxx.xxx:5001"]
+
+          # 모든 Deployment 는 yaml 내 image 주소 수정으로 Proxy Mirror (예. ${NEXUS_0}:5001)를 통해서 가능하나, 일부 오픈소스 배포 시 변경을 못하는 경우가 있는 관계로 docker, k8s, quay 등 기본적인 mirror 들은 추가해두는 것이 필요
+          # 예) Prometheus 배포 시, POD 내에서 자체적으로 (yaml 이 아닌) 배포되는 container 가 있으며 quay.io 에서 이미지를 찾게끔 되어있음
+
+  - 1.2.4 : Start CRI (containerd)
   
         sudo systemctl restart containerd
   
