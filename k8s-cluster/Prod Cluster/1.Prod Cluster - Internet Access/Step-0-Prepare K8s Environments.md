@@ -59,7 +59,7 @@
         export ETCD_2=10.xxx.xxx.xxx
         export ETCD_3=10.xxx.xxx.xxx
 
-        export LB_1=110.xxx.xxx.xxx
+        export LB_1=10.xxx.xxx.xxx
 
         export MASTER_1=10.xxx.xxx.xxx
         export MASTER_2=10.xxx.xxx.xxx

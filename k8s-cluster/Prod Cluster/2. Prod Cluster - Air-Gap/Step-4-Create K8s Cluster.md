@@ -110,8 +110,6 @@
 
         cat /etc/yum.repos.d/nexus.repo
 
-        # sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
   - 2.1.3 :  
 
         cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
