@@ -2,51 +2,6 @@
 
 ### **Prepartion**
 
-1. Create Connection from Bastion Server 
-- at bastion Server  
-      
-      ssh-copy-id -i ~/.ssh/id_rsa.pub root@$ETCD_1
-
-    - Enter the VM's Password
-    - Repeat to ETCD_2, ETCD_3
-
-2. The First Login to ETCD_1
-
-- SSH Login to the ETCD_1
-
-      ssh $ETCD_1
-
-    - Repeat to ETCD_2, ETCD_3
-
-- Change the Password of ETCD_1
-
-  - as root user  
-
-        passwd
-
-      enter new password (twice)
-      
-3. Declare Parameters
-  - Parameters
-
-        sudo cat <<EOF >> ~/.bashrc
-
-        export ETCD_1=10.xxx.xxx.xxx
-        export ETCD_2=10.xxx.xxx.xxx
-        export ETCD_3=10.xxx.xxx.xxx
-
-        EOF
-
-        cat ~/.bashrc
-
-        source  ~/.bashrc
----
-
-## **Create External etcd Cluster with etcdadm**
-
----
-## **For External etcd**
-
 1. Download Software Package for etcdadm
     
     1.1 install Git and make
@@ -107,6 +62,52 @@
           cp ~/etcdadm/etcdadm ~/files/BASTION-0/etcdadm/
           cp ~/etcdadm/etcd-v3.5.7-linux-amd64.tar.gz ~/files/BASTION-0/etcdadm/
 
+
+---
+## **Connect to VM's for External etcd nodes**
+---
+
+1. Create Connection from Bastion Server 
+- at bastion Server  
+      
+      ssh-copy-id -i ~/.ssh/id_rsa.pub root@$ETCD_1
+
+    - Enter the VM's Password
+    - Repeat to ETCD_2, ETCD_3
+
+2. The First Login to ETCD_1
+
+- SSH Login to the ETCD_1
+
+      ssh $ETCD_1
+
+    - Repeat to ETCD_2, ETCD_3
+
+- Change the Password of ETCD_1
+
+  - as root user  
+
+        passwd
+
+      enter new password (twice)
+      
+3. Declare Parameters
+  - Parameters
+
+        sudo cat <<EOF >> ~/.bashrc
+
+        export ETCD_1=10.xxx.xxx.xxx
+        export ETCD_2=10.xxx.xxx.xxx
+        export ETCD_3=10.xxx.xxx.xxx
+
+        EOF
+
+        cat ~/.bashrc
+
+        source  ~/.bashrc
+---
+
+## **Create External etcd Cluster with etcdadm**
 
 ---
 

@@ -325,7 +325,7 @@
         apiVersion: kubeadm.k8s.io/v1beta3
         kind: ClusterConfiguration
         clusterName: test.k8s.ymlee
-        kubernetesVersion: "v1.27.1"
+        kubernetesVersion: "v1.27.2"
         networking:
           podSubnet: 192.168.0.0/16
           serviceSubnet: 20.96.0.0/16
