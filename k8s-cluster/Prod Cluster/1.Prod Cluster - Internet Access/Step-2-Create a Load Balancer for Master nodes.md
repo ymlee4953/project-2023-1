@@ -13,6 +13,7 @@
 
 - SSH Login to the LB_1
 
+
       ssh $LB_1
 
 - Change the Password of LB_1
@@ -24,11 +25,25 @@
       enter new password (twice)
 
 3. Declare Parameters
-- for Master nodes
 
-      export MASTER_1=10.xxx.xxx.xxx
-      export MASTER_2=10.xxx.xxx.xxx
-      export MASTER_3=10.xxx.xxx.xxx
+- at the LB-1
+
+  - Parameters
+
+        sudo cat <<EOF >> ~/.bashrc
+
+        export LB_1=110.xxx.xxx.xxx
+
+        export MASTER_1=10.xxx.xxx.xxx
+        export MASTER_2=10.xxx.xxx.xxx
+        export MASTER_3=10.xxx.xxx.xxx
+
+        EOF
+
+        cat ~/.bashrc
+
+        source  ~/.bashrc
+
 
 
 ### **Setup HA Proxy**

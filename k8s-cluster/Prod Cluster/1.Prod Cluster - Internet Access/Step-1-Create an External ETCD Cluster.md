@@ -26,6 +26,23 @@
 
       enter new password (twice)
 
+
+3. Declare Parameters
+  - Parameters
+
+        sudo cat <<EOF >> ~/.bashrc
+
+        export ETCD_1=10.xxx.xxx.xxx
+        export ETCD_2=10.xxx.xxx.xxx
+        export ETCD_3=10.xxx.xxx.xxx
+
+        EOF
+
+        cat ~/.bashrc
+
+        source  ~/.bashrc
+
+
 ---
 
 ## **Create External etcd Cluster with etcdadm**

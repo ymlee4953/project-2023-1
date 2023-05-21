@@ -37,22 +37,27 @@
 3. Declare Parameters
 - at each Kubernetes nodes
 
-      export NEXUS_0=10.xxx.xxx.xxx
+  - Parameters
 
-      export ETCD_1=10.xxx.xxx.xxx
-      export ETCD_2=10.xxx.xxx.xxx
-      export ETCD_3=10.xxx.xxx.xxx
+        sudo cat <<EOF >> ~/.bashrc
 
-      export LB_1=10.xxx.xxx.xxx
+        export NEXUS_0=10.xxx.xxx.xxx
 
-      export MASTER_1=10.xxx.xxx.xxx
-      export MASTER_2=10.xxx.xxx.xxx
-      export MASTER_3=10.xxx.xxx.xxx
+        export ETCD_1=10.xxx.xxx.xxx
+        export ETCD_2=10.xxx.xxx.xxx
+        export ETCD_3=10.xxx.xxx.xxx
 
-      export WORKER_1=10.160.22.188
-      export WORKER_2=10.160.22.143
-      export WORKER_3=10.160.22.166
+        export LB_1=110.xxx.xxx.xxx
 
+        export MASTER_1=10.xxx.xxx.xxx
+        export MASTER_2=10.xxx.xxx.xxx
+        export MASTER_3=10.xxx.xxx.xxx
+
+        EOF
+
+        cat ~/.bashrc
+
+        source  ~/.bashrc
 ---
 ### **Create Cluster**
 
@@ -402,9 +407,9 @@
 
           ssh $MASTER_2       // and MASTER_3
           
-          kubeadm join 10.168.40.37:6443 --token v4hs9a.hstnvaq93w73pvo9 \
-          --discovery-token-ca-cert-hash sha256:b6af0746091b649fd69ec64a4a2b9082f140e201304f6c7fdf9b2710e41a523e \
-          --control-plane --certificate-key 14c77e611f4f15eec09194cafaa0994b5c0281a76bef0be4b09ea268afc4e3b8
+          kubeadm join 10.xxx.xxx.xxx:6443 --token xxxxxxxxxxxxxxxxxxxxxxx \
+          --discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
+          --control-plane --certificate-key xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
     4.4 **Make Kubernetes access environment for master-2,3**
     - At the master-2,3 Server
@@ -428,8 +433,8 @@
 
           ssh $WORKER_1       // and WORKER_2,3
           
-          kubeadm join 10.168.40.37:6443 --token v4hs9a.hstnvaq93w73pvo9 \
-          --discovery-token-ca-cert-hash sha256:b6af0746091b649fd69ec64a4a2b9082f140e201304f6c7fdf9b2710e41a523e 
+          kubeadm join 10.xxx.xxx.xxx:6443 --token xxxxxxxxxxxxxxxxxxxxxxx \
+          --discovery-token-ca-cert-hash sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 
           exit
 

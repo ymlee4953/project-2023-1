@@ -51,18 +51,27 @@
 ## **Echo Parameters**
   - Parameters
 
-        export NEXUS_0=10.160.22.158
+        sudo cat <<EOF >> ~/.bashrc
 
-        export ETCD_1=10.160.22.185
-        export ETCD_2=10.160.22.162
-        export ETCD_3=10.160.22.138
+        export NEXUS_0=10.xxx.xxx.xxx
 
-        export LB_1=10.160.22.171
+        export ETCD_1=10.xxx.xxx.xxx
+        export ETCD_2=10.xxx.xxx.xxx
+        export ETCD_3=10.xxx.xxx.xxx
 
-        export MASTER_1=10.160.22.188
-        export MASTER_2=10.160.22.166
-        export MASTER_3=10.160.22.143
+        export LB_1=110.xxx.xxx.xxx
 
-        export WORKER_1=10.160.22.172
-        export WORKER_2=10.160.22.174
-        export WORKER_3=10.160.22.173
+        export MASTER_1=10.xxx.xxx.xxx
+        export MASTER_2=10.xxx.xxx.xxx
+        export MASTER_3=10.xxx.xxx.xxx
+
+        export WORKER_1=10.xxx.xxx.xxx
+        export WORKER_2=10.xxx.xxx.xxx
+        export WORKER_3=10.xxx.xxx.xxx
+
+        EOF
+
+        cat ~/.bashrc
+
+        source  ~/.bashrc
+
