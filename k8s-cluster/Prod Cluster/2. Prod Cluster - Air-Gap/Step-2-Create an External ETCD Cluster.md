@@ -173,6 +173,8 @@
     4.1. Get those cert files from ETCD-1
 
     - At the bastion/ansible Server
+          
+          cd
 
           mkdir -p ~/files/ETCD-1/etc/etcd/pki
 
