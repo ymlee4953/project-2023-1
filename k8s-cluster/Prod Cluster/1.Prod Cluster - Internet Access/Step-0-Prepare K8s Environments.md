@@ -6,7 +6,6 @@
 
 | Server | Hostname | Public IP | Private IP | Parameter |
 | :--- | :--- | :--- | :--- | :--- |
-
 | Nexus |nexus-0.k8s.demo | xxx.xxx.xxx.xxx	| 10.xxx.xxx.xxx | NEXUS_0 |
 
 ---

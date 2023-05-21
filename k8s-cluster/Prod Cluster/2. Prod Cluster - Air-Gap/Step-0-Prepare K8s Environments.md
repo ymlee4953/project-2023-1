@@ -6,8 +6,7 @@
 
 | Server | Hostname | Public IP | Private IP | Parameter |
 | :--- | :--- | :--- | :--- | :--- |
-| Bastion |bastion-0.k8s.demo.ymlee	| 169.45.124.110	|10.160.22.167 | BASTION_0 |
-
+| Nexus |nexus-0.k8s.demo | xxx.xxx.xxx.xxx	| 10.xxx.xxx.xxx | NEXUS_0 |
 
 ---
 
@@ -15,16 +14,17 @@
 
 | Server | Hostname | Public IP | Private IP | Parameter |
 | :--- | :--- | :--- | :--- | :--- |
-| ETCD |etcd-1.k8s.demo.ymlee	| -	|10.160.22.167 | ETCD_1 |
-| ETCD |etcd-2.k8s.demo.ymlee	| -	|10.160.22.167 | ETCD_2 |
-| ETCD |etcd-3.k8s.demo.ymlee	| -	|10.160.22.167 | ETCD_3 |
-| Load Balancer |lb-1.k8s.demo.ymlee	|  169.45.124.110	|10.160.22.167 | LB_1 |
-| Control Plane |master-1.k8s.demo.ymlee	|  -	|10.160.22.167 | MASTER_1 |
-| Control Plane |master-2.k8s.demo.ymlee	|  -	|10.160.22.167 | MASTER_2 |
-| Control Plane |master-3.k8s.demo.ymlee	|  -	|10.160.22.167 | MASTER_3 |
-| Worker |worker-1.k8s.demo.ymlee	|  -	|10.160.22.167 | WORKER_1 |
-| Worker |worker-2.k8s.demo.ymlee	|  -	|10.160.22.167 | WORKER_2 |
-| Worker |worker-3.k8s.demo.ymlee	|  -	|10.160.22.167 | WORKER_3 |
+| Bastion |bastion-0.k8s.demo | xxx.xxx.xxx.xxx	| 10.xxx.xxx.xxx | BASTION_0 |
+| ETCD |etcd-1.k8s.demo | - | 10.xxx.xxx.xxx  | ETCD_1 |
+| ETCD |etcd-2.k8s.demo | - | 10.xxx.xxx.xxx  | ETCD_2 |
+| ETCD |etcd-3.k8s.demo | - | 10.xxx.xxx.xxx  | ETCD_3 |
+| Load Balancer |lb-1.k8s.demo |  xxx.xxx.xxx.xxx | 10.xxx.xxx.xxx | LB_1 |
+| Control Plane |master-1.k8s.demo | - | 10.xxx.xxx.xxx | MASTER_1 |
+| Control Plane |master-2.k8s.demo | - | 10.xxx.xxx.xxx | MASTER_2 |
+| Control Plane |master-3.k8s.demo | - | 10.xxx.xxx.xxx | MASTER_3 |
+| Worker |worker-1.k8s.demo | - | 10.xxx.xxx.xxx | WORKER_1 |
+| Worker |worker-2.k8s.demo | - | 10.xxx.xxx.xxx | WORKER_2 |
+| Worker |worker-3.k8s.demo | - | 10.xxx.xxx.xxx | WORKER_3 |
 ---
 
 
